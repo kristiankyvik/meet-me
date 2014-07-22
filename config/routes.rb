@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get 'about' => 'about#contact_info'
   get 'locations' => 'locations#index'
 
-
   get 'locations/:id' => 'locations#show' 
-
   post 'locations/new'=> 'locations#create'
+
+  
+  get 'locations/:location_id/visits' => 'visits#index'
+  get 'locations/:location_id/visits/:id' => 'visits#show'
 end

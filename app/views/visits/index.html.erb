@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>visits</title>
+</head>
+<body>
+<h1>My visits</h1>
+
+
+<ul>
+<% @visits.each do |visit| %>
+<li><%= visit.location.name   %> <span> - </span> <%=  visit.user_name  %></li>
+<% end %>
+</ul>
+
+</body>
+</html>
+

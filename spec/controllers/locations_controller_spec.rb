@@ -28,7 +28,5 @@ RSpec.describe LocationsController, :type => :controller do
 		get :show,  {:id => 156}
 		expect(response).to render_template("404")
 	end
-
-
 end
 
