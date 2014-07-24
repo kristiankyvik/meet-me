@@ -1,20 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>locations</title>
-</head>
-<body>
-<h1>My Locations</h1>
+
+<div class="row">
+  <div class="col-md-10 rd">
+    <h1>My Locations</h1>
+  </div>
+  <div class="col-md-2 rd myh1">
+    <button type="button" class="btn btn-primary">Add New Location</button>
+  </div>  
+</div>
 
 
-<ul>
-<% @locations.each do |element| %>
-<li><%=  element.name %> <span> - </span> <%=  element.city %></li>
+
+<table class="table">
+<tbody>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Visits</th>
+    <th>Actions</th>
+  </tr>
+<% @locations.each do |location| %>
+  <tr>
+    <td><%= link_to location.name, location_path(location.id) %></td> 
+    <td> <%=  location.city %></td>
+    <td> <%=  link_to location.visits.count, location_visits_path(location.id)%></td>
+    <td> <%=  link_to "delete", location_path(location.id),
+            method: 'delete' , confirm: "Are you sure?"%>
+            <%=  link_to "edit", edit_location_path(location.id),
+            method: 'get' %>
+    </td>
+  </tr>
 <% end %>
-</ul>
 
+ </tbody>
+</table>
 
-<%= form_for :location, url: new_location_path do |f| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Create a new Location</h3>
+  </div>
+  <div class="panel-body">
+<%= form_for :location, url: locations_path do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -29,6 +54,14 @@
     <%= f.submit %>
   </p>
 <% end %>
-</body>
-</html>
+
+
+    
+  </div>
+</div>
+
+
+
+
+
 

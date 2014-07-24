@@ -2,6 +2,12 @@
 
 class Location < ActiveRecord::Base
 	has_many :visits
+
+	validates :name, presence: true
+	validates :city, presence: true
+
+
+
 	def self.finder(id1)
 		where(id: id1).first
 	end

@@ -9,6 +9,7 @@ RSpec.describe Location, :type => :model do
 		
 	# end
 
+
 	it "retrives last correctly" do
 		loc=Location.create(name: "hola")
 		loc=Location.create(name: "comoestas")
@@ -23,8 +24,6 @@ RSpec.describe Location, :type => :model do
     vis2=Visit.create(location_id: loc.id, from_date: DateTime.now + 2.month, to_date: DateTime.now + 3.month)
 
     expect(loc.total_visits_in_month_of_year(1, 2000)).to eql(1)
-
   end
-
 end
 

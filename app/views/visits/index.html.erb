@@ -1,18 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>visits</title>
-</head>
-<body>
-<h1>My visits</h1>
-
-
-<ul>
-<% @visits.each do |visit| %>
-<li><%= visit.location.name   %> <span> - </span> <%=  visit.user_name  %></li>
+<% if flash[:message] %>
+  <div class="alert alert-success" role="alert"><%= flash[:message] %></div>
 <% end %>
-</ul>
 
-</body>
-</html>
 
+<div class="col-md-10 rd">
+  <h1>My Visits</h1>
+</div>
+ <div class="col-md-2 rd myh1">
+    <%= link_to "Add Visit", new_location_visit_path(params[:location_id]),:class => "btn btn-primary" %>
+</div>
+<table class="table">
+  <tbody>
+    <% @visits.each do |visit| %>
+    <tr>
+      <td>
+        <%= link_to visit.user_name, location_visit_path(visit.location.id, visit.id)%> 
+      </td> 
+      <td>
+      <%= link_to "delete", location_visit_path(visit.location.id, visit),
+          method: 'delete' , confirm: "Are you sure?" %>
+
+      <%= link_to "edit", edit_location_visit_path(visit.location.id, visit),
+          method: 'get' %>
+      </td> 
+    </tr>
+    <% end %>
+  </tbody>
+</table>

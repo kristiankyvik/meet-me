@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Visit, :type => :model do
+
   pending "add some examples to (or delete) #{__FILE__}"
 
 	
   it "has attribute locatio_id" do
-  	v=Visit.new(location_id: 45)
+  	v=Visit.new
   	expect(v.has_attribute?(:location_id)).to eq(true)
   end
 
@@ -24,4 +25,7 @@ RSpec.describe Visit, :type => :model do
   	expect(v.has_attribute?(:to_date)).to eq(true)
   end
 
+
+
 end
+
