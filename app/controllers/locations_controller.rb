@@ -23,7 +23,7 @@ class LocationsController < ApplicationController
 	end
 
 	def edit
-		@location=Location.find(params[:id])
+		@location = Location.find(params[:id])
 		render 'edit'
 	end
 
