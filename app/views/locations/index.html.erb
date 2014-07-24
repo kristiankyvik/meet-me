@@ -8,11 +8,10 @@
   </div>  
 </div>
 
-
-
 <table class="table">
 <tbody>
   <tr>
+    <th>Picture</th>
     <th>Name</th>
     <th>City</th>
     <th>Visits</th>
@@ -20,6 +19,9 @@
   </tr>
 <% @locations.each do |location| %>
   <tr>
+    <% if location.avatar_file_name != "" %>
+      <td><%= image_tag location.avatar.url %></td> 
+    <% end %>
     <td><%= link_to location.name, location_path(location.id) %></td> 
     <td> <%=  location.city %></td>
     <td> <%=  link_to location.visits.count, location_visits_path(location.id)%></td>
@@ -39,7 +41,7 @@
     <h3 class="panel-title">Create a new Location</h3>
   </div>
   <div class="panel-body">
-<%= form_for :location, url: locations_path do |f| %>
+<%= form_for :location, url: locations_path, :html => { :multipart => true } do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -49,7 +51,9 @@
     <%= f.label :city %><br>
     <%= f.text_area :city %>
   </p>
- 
+   <p>
+  <%= f.file_field :avatar %>
+  </p>
   <p>
     <%= f.submit %>
   </p>

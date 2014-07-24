@@ -18,11 +18,8 @@ class VisitsController < ApplicationController
   end
 
   def create
-
-
     @location = Location.find(params[:location_id])
     @visit = @location.visits.new( visit_params ) 
-
     if @visit.save
       flash[:message] = "Action has been succesfull!"
       redirect_to( action: 'index', controller: 'visits', location_id: @location.id)
@@ -45,7 +42,7 @@ class VisitsController < ApplicationController
   def update
     @location = Location.find(params[:location_id])
     @visit = Visit.find(params[:id])
-
+    @visit.update_attributes( visit_params )
     if @visit.save
       redirect_to( action: 'index', controller: 'visits', location_id: @location.id)
     else

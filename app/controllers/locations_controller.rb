@@ -40,7 +40,7 @@ class LocationsController < ApplicationController
 
 	  private
     def visit_params
-        params.require(:location).permit(:name, :city)
+        params.require(:location).permit(:name, :city, :avatar)
     end
 
 end
