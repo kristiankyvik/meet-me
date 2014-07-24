@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
 
 	def index
-		@locations=Location.last(10)
+		@locations = Location.last(10)
 		render 'index'
 	end
 
@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
 	end
 
 	def show
-		@location=Location.find(params[:id])
+		@location = Location.find(params[:id])
 		
 		rescue ActiveRecord::RecordNotFound
 		render '404' , status: 404
