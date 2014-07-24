@@ -3,7 +3,7 @@ class Visit < ActiveRecord::Base
   belongs_to :user
   validates :to_date, presence: true
   validates :from_date, presence: true
-  validates :user_name, presence: true
+  validates :user_id, presence: true
   validates_presence_of :location
   validate :from_date_is_before_than_to_date
   validate :from_date_must_be_in_future
@@ -15,7 +15,7 @@ class Visit < ActiveRecord::Base
   end
 
   def from_date_must_be_in_future 
-    if from_date <= DateTime.now
+    if self.from_date > DateTime.now
       errors.add(:from_date, "can't be in the past")
     end
   end
