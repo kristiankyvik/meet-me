@@ -1,40 +1,37 @@
 
+<div class="jumbotron">
+  <h1>All your places in one place</h1>
+  <p>Invite your friends and family and add your own visits or locations!</p>
+  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+</div>
+
 <div class="row">
   <div class="col-md-10 rd">
     <h1>My Locations</h1>
-  </div>
-  <div class="col-md-2 rd myh1">
-    <button type="button" class="btn btn-primary">Add New Location</button>
-  </div>  
+  </div> 
 </div>
 
-<table class="table">
-<tbody>
-  <tr>
-    <th>Picture</th>
-    <th>Name</th>
-    <th>City</th>
-    <th>Visits</th>
-    <th>Actions</th>
-  </tr>
-<% @locations.each do |location| %>
-  <tr>
-    <% if location.avatar_file_name != "" %>
-      <td><%= image_tag location.avatar.url %></td> 
-    <% end %>
-    <td><%= link_to location.name, location_path(location.id) %></td> 
-    <td> <%=  location.city %></td>
-    <td> <%=  link_to location.visits.count, location_visits_path(location.id)%></td>
-    <td> <%=  link_to "delete", location_path(location.id),
-            method: 'delete' , confirm: "Are you sure?"%>
-            <%=  link_to "edit", edit_location_path(location.id),
-            method: 'get' %>
-    </td>
-  </tr>
-<% end %>
+<div class="row">
+  <% @locations.each do |location| %>
+    <div class="col-sm-6 col-md-3">
+      <div >
+         <%= image_tag location.avatar.url%>
+      </div>
+      <div class="caption">
+         <h3><%= link_to location.name, location_path(location.id) %> <span class="label label-warning"> <%= location.city %></span> </h3>
 
- </tbody>
-</table>
+         <p>Some sample text. Some sample text.</p>
+         <p>
+            <%=  link_to "delete", location_path(location.id),
+            method: 'delete' , confirm: "Are you sure?", :class => "btn btn-info" %>
+            <%=  link_to "edit", edit_location_path(location.id),
+            method: 'get', :class => "btn btn-info" %>
+         </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
 
 <div class="panel panel-default">
   <div class="panel-heading">

@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+body{
+  background-image: url("background.jpg");
+}
 
 header {
   position: fixed;
@@ -26,10 +29,11 @@ header {
 .barra {
   width: 960px; }
   .barra #brand {
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    line-height: 46px;
+    font-size: 46px;
+    margin: 0 0 23px 0;
     width: 300px;
     height: 60px;
     display: inline-block;

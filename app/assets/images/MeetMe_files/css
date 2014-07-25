@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Amatic SC';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Amatic SC Bold'), local('AmaticSC-Bold'), url(http://fonts.gstatic.com/s/amaticsc/v5/IDnkRTPGcrSVo50UyYNK7xampu5_7CjHW5spxoeN3Vs.woff2) format('woff2'), url(http://fonts.gstatic.com/s/amaticsc/v5/IDnkRTPGcrSVo50UyYNK76RDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Josefin Sans Bold'), local('JosefinSans-Bold'), url(http://fonts.gstatic.com/s/josefinsans/v6/C6HYlRF50SGJq1XyXj04z8hHwsiXhsDb0smKjAA7Bek.woff2) format('woff2'), url(http://fonts.gstatic.com/s/josefinsans/v6/C6HYlRF50SGJq1XyXj04zxAPw1J91axKNXP_-QX9CC8.woff) format('woff');
+}
