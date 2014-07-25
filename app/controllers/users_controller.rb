@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @visits = Visit.where(:user_id => params[:id],:from_date => DateTime.now.beginning_of_month..DateTime.now.end_of_month)
+    @locations = Location.all
   end
 
   def edit

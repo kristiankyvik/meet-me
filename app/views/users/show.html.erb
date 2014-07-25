@@ -18,7 +18,7 @@
         <%= visit.id %> 
       </td> 
       <td>
-        <%= Location.find(visit.location_id).name %>
+        <%= print_location_name(visit) %>
       </td>
       <td>
         <%= visit.from_date %> 
