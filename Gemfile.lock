@@ -90,6 +90,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    refills (0.0.2)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -149,6 +150,7 @@ DEPENDENCIES
   paperclip (~> 4.1)
   pg
   rails (= 4.1.1)
+  refills
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

@@ -1,2 +1,27 @@
-<h1>SHOW VIEW</h1>
-<div><%= @location.name %></div>
+<ul class="media-list">
+  <li class="media">
+    <a class="pull-left" href="#">
+      <td><%= image_tag @location.avatar.url %></td> 
+
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <h1><%= @location.name %></h1>
+      </h4>
+        <ul>
+          <li>City: <%= @location.city %> </li>
+        </ul>
+    </div>
+  </li>
+</ul>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+    <h3 class="panel-title">Panel title</h3>
+  </div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title"> <% link_to "Who has visited this location?", location_visits_path(@location.id)  %> </h3>
+  </div>
+</div>
