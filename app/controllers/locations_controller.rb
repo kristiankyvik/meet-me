@@ -6,7 +6,7 @@ class LocationsController < ApplicationController
 	end
 
 	def create
-		Location.create(name: params[:location][:name], city:params[:location][:city] )
+		Location.create(name: params[:location][:name], city:params[:location][:city], avatar: params[:location][:avatar] )
 		redirect_to root_url
 	end
 

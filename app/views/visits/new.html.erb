@@ -7,12 +7,19 @@
 <% end %>
 
 
-<%= form_for [ @location, @visit] do |f| %>
-  <%= f.label :user_name  %>
-  <%= f.text_field :user_name %>
+<%= form_for [ @location, @visit ] do |f| %>
+  <%= f.label :user_id  %>
+
+   <% user_array = @users.map { |user| [user.user_name, user.id] } %>
+  <%# options_for_select(user_array) %>
+  <%= f.select :user_id, user_array %>
+
+
 <br/>
+  <%= f.label 'from'  %>
   <%= f.datetime_select( :from_date, default: Time.now + 1.days ) %>
 <br/>
+  <%= f.label 'to'  %>
   <%= f.datetime_select( :to_date, default: Time.now + 1.days ) %>
 <br/>
   <%= f.submit "Save" %>

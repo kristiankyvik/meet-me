@@ -13,12 +13,15 @@ class VisitsController < ApplicationController
   def new
     @location = Location.find(params[:location_id])
     @visit = Visit.new()
+    @users =User.all
     render "new"
   end
 
   def create
     @location = Location.find(params[:location_id])
-    @visit = @location.visits.new( visit_params ) 
+    @visit = @location.visits.new( visit_params )
+    @users =User.all
+    # render plain: params.inspect
     if @visit.save
       flash[:message] = "Action has been succesfull!"
       redirect_to( action: 'index', controller: 'visits', location_id: @location.id)
@@ -51,6 +54,6 @@ class VisitsController < ApplicationController
 
   private
     def visit_params
-        params.require(:visit).permit(:to_date, :from_date, :user_name)
+        params.require(:visit).permit(:to_date, :from_date, :user_id)
     end
 end

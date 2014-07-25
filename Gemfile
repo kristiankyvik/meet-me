@@ -30,6 +30,7 @@ gem 'rspec-rails', group: [:test, :development]
 
 
 gem "paperclip", "~> 4.1"
+gem "better_errors"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
