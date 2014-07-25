@@ -1,6 +1,7 @@
 <div class="col-md-10 rd">
-  <h1>User profile @user.user_name</h1>
-  <h2><%= @user.name %><%=  @user.nationality %></h2>
+  <h1>User profile <%= @user.user_name%> </h1>
+  <h2>Name: <%= @user.name %> Nationality <%=  @user.nationality %></h2>
+  <h3>Visits</h3>
 </div>
 
 <table class="table">
@@ -17,7 +18,7 @@
         <%= visit.id %> 
       </td> 
       <td>
-        <%= visit.location_id %>
+        <%= print_location_name(visit) %>
       </td>
       <td>
         <%= visit.from_date %> 
