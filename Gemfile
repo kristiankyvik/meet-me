@@ -30,7 +30,6 @@ gem 'rspec-rails', group: [:test, :development]
 
 
 gem "paperclip", "~> 4.1"
-gem "better_errors"
 gem 'refills'
 
 # Use ActiveModel has_secure_password
