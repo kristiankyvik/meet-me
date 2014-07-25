@@ -15,7 +15,7 @@ class Visit < ActiveRecord::Base
   end
 
   def from_date_must_be_in_future 
-    if self.from_date < DateTime.now
+    if self.from_date > DateTime.now
       errors.add(:from_date, "can't be in the past")
     end
   end
