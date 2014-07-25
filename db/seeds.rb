@@ -19,13 +19,13 @@ us6 = User.create( user_name: "merchecita", name: "merche")
 us7 = User.create( user_name: "walt", name: "juan")
 
 
-Visit.create(location_id: s.id, user_id: us1.id, from_date: DateTime.now, to_date: DateTime.now + arr.sample.hour)
-Visit.create(location_id: s1.id, user_id: us2.id, from_date: DateTime.now, to_date: DateTime.now + arr.sample.hour)
-Visit.create(location_id: s2.id, user_id: us2.id, from_date: DateTime.now, to_date: DateTime.now + arr.sample.hour)
-Visit.create(location_id: s2.id, user_id: us4.id, from_date: DateTime.now, to_date: DateTime.now + arr.sample.hour)
-Visit.create(location_id: s2.id, user_id: us5.id, from_date: DateTime.now, to_date: DateTime.now + arr.sample.hour)
-Visit.create(location_id: s2.id, user_id: us7.id, from_date: DateTime.now, to_date: DateTime.now + arr.sample.hour)
-Visit.create(location: s2, user_id: us6.id, from_date: DateTime.now, to_date: DateTime.now + arr.sample.hour)
+Visit.create(location_id: s.id, user_id: us1.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+Visit.create(location_id: s1.id, user_id: us2.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+Visit.create(location_id: s2.id, user_id: us2.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+Visit.create(location_id: s2.id, user_id: us4.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+Visit.create(location_id: s2.id, user_id: us5.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+Visit.create(location_id: s2.id, user_id: us7.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+Visit.create(location: s2, user_id: us6.id, from_date: DateTime.now + 1.hour, to_date:DateTime.now + 2.hours)
 
 
 
