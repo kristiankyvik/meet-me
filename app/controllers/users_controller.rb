@@ -25,9 +25,16 @@ class UsersController < ApplicationController
   	end
   end
 
+  def destroy
+  	User.destroy(params[:id])
+  	redirect_to( action: 'index', controller: 'users',user_id: params[:id])
+  end
+
   private
 
   def user_params
   	params.require(:user).permit(:user_name, :name, :nationality)
   end
+
+
 end
