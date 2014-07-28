@@ -11,6 +11,17 @@
   </div> 
 </div>
 
+<%= form_for :search, url: search_index_path do |f| %>
+  <p>
+    <%= f.label :key_word %><br>
+    <%= f.text_field :key_word %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
 <div class="row">
   <% @locations.each do |location| %>
     <div class="col-sm-6 col-md-3">
@@ -31,6 +42,7 @@
     </div>
   <% end %>
 </div>
+
 
 
 <div class="panel panel-default">
