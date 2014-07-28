@@ -16,12 +16,20 @@ RSpec.describe VisitsController, :type => :controller do
     expect(response).to render_template("index")   
   end
 
-it "renders the index with a patameter" do
+  it "renders the index with a parameter" do
     loc=Location.create()
     vis=Visit.create()
     vis.location=loc
     get :show,  {:location_id => loc.id, :id => vis.id}
     expect(assigns(:visits)).to eq(vis)
+  end
+
+  it "new method return an array of user id" do
+    s1=Location.create(name: "El pillao", city: "Girona", country: "Spain" )
+    visit = Visit.new()
+    us1 = User.create( user_name: "pepito", name: "quillo")
+    get :new,  {:user => loc.id, :id => vis.id}
+        expect(assigns(:visits)).to eq(vis)
   end
 
   # it "id does not belong to existing location, renders error page" do

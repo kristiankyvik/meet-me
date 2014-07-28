@@ -1,9 +1,7 @@
 class VisitsController < ApplicationController
 
-
   def index
-      location = Location.find(params[:location_id])
-      @visits = location.visits.where(:from_date => DateTime.now.beginning_of_month..DateTime.now.end_of_month)
+      @visits = User.find(params[:user_id]).visits.last(10)
   end
 
   def show

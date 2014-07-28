@@ -20,7 +20,7 @@
       <div class="caption">
          <h3><%= link_to location.name, location_path(location.id) %> <span class="label label-warning"> <%= location.city %></span> </h3>
 
-         <p>Some sample text. Some sample text.</p>
+         <p>Some sample text.</p>
          <p>
             <%=  link_to "delete", location_path(location.id),
             method: 'delete' , confirm: "Are you sure?", :class => "btn btn-info" %>
@@ -40,12 +40,13 @@
     <h3 class="panel-title">Create a new Location</h3>
   </div>
   <div class="panel-body">
-<%= form_for :location, url: locations_path, :html => { :multipart => true } do |f| %>
+
+
+<%= form_for :location,  url: locations_path, :html => { :multipart => true }, :class => "form-inline" do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
- 
   <p>
     <%= f.label :city %><br>
     <%= f.text_area :city %>
@@ -58,13 +59,5 @@
   </p>
 <% end %>
 
-
-    
   </div>
 </div>
-
-
-
-
-
-

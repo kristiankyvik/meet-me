@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bootstrap_form (2.1.1)
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -86,7 +87,6 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
-    refills (0.0.2)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -140,12 +140,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap_form
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (~> 4.1)
   pg
   rails (= 4.1.1)
-  refills
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
