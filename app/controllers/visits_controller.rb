@@ -5,7 +5,7 @@ class VisitsController < ApplicationController
       @visits = location.visits.where(:from_date => DateTime.now.beginning_of_month..DateTime.now.end_of_month)
   end
 
-  def show
+  def show # TODO render not visit find, create a new partial
     @visit = Visit.find(params[:id])
   end
 
