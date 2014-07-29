@@ -34,14 +34,16 @@
       </div>
       <div class="caption">
          <h3><%= link_to location.name, location_path(location.id) %> <span class="label label-warning"> <%= location.city %></span> </h3>
-
-         <p>Some sample text.</p>
+         <% if !location.comments.all.empty? %>
+         <p><%= location.comments[0].comment_text %></p>
+         <% end %>
          <p>
             <%=  link_to "delete", location_path(location.id),
             method: 'delete' , confirm: "Are you sure?", :class => "btn btn-info" %>
             <%=  link_to "edit", edit_location_path(location.id),
             method: 'get', :class => "btn btn-info" %>
          </p>
+
       </div>
     </div>
   <% end %>
@@ -58,7 +60,7 @@
   <div class="panel-body">
 
 
-<%= form_for :location,  url: locations_path, :html => { :multipart => true }, :class => "form-inline" do |f| %>
+<%= form_for @location, :html => { :multipart => true }, :class => "form-inline" do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -70,6 +72,11 @@
    <p>
   <%= f.file_field :avatar %>
   </p>
+  <%= f.fields_for :comments do |comment_form| %>
+    <%= comment_form.hidden_field :id %>
+    <%= comment_form.label "Comment" %>
+    <%= comment_form.text_area :comment_text %>
+   <% end %>
   <p>
     <%= f.submit %>
   </p>

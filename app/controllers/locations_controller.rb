@@ -2,11 +2,17 @@ class LocationsController < ApplicationController
 
 	def index
 		@locations = Location.last(10)
+
+    @location = Location.new
+    @location.comments.build
+
 		render 'index'
 	end
 
 	def create
-		Location.create(name: params[:location][:name], city:params[:location][:city], avatar: params[:location][:avatar] )
+		@location = Location.new(location_params)
+    @location.save
+
 		redirect_to root_url
 	end
 
@@ -41,7 +47,10 @@ class LocationsController < ApplicationController
 
 	  private
     def visit_params
-        params.require(:location).permit(:name, :city, :avatar)
+        params.require(:location).permit(:name, :city, :avatar, comments_attributes: [:id, :comment_text])
     end
 
+    def location_params
+        params.require(:location).permit(:name, :city, :avatar, comments_attributes: [:id, :comment_text])
+    end
 end
