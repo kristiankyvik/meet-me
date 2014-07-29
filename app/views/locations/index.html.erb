@@ -5,22 +5,26 @@
   <p><a class="btn btn-info btn-lg" role="button">Learn more</a></p>
 </div>
 
-<div class="row">
-  <div class="col-md-10 rd">
-    <h1>My Locations</h1>
-  </div> 
-</div>
 
-<%= form_for :search, url: search_index_path do |f| %>
+
+<%= form_for :search, url: search_index_path, :html => { :class => 'form-search' } do |f| %>
   <p>
     <%= f.label :key_word %><br>
-    <%= f.text_field :key_word %>
+    <%= f.text_field :key_word, :class => "input-medium search-query" %>
   </p>
  
   <p>
     <%= f.submit %>
   </p>
 <% end %>
+
+
+<div class="row">
+  <div class="col-md-10 rd">
+    <h1>My Locations</h1>
+  </div> 
+</div>
+
 
 <div class="row">
   <% @locations.each do |location| %>
