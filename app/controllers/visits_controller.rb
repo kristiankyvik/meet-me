@@ -1,10 +1,11 @@
 class VisitsController < ApplicationController
 
   def index
-      @visits = User.find(params[:user_id]).visits.last(10)
+      location = Location.find(params[:location_id])
+      @visits = location.visits.where(:from_date => DateTime.now.beginning_of_month..DateTime.now.end_of_month)
   end
 
-  def show
+  def show # TODO render not visit find, create a new partial
     @visit = Visit.find(params[:id])
   end
 
@@ -19,7 +20,6 @@ class VisitsController < ApplicationController
     @location = Location.find(params[:location_id])
     @visit = @location.visits.new( visit_params )
     @users =User.all
-    # render plain: params.inspect
     if @visit.save
       flash[:message] = "Action has been succesfull!"
       redirect_to( action: 'index', controller: 'visits', location_id: @location.id)
