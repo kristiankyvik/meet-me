@@ -28,7 +28,7 @@
 
 <div class="row">
   <% @locations.each do |location| %>
-    <div class="col-sm-6 col-md-3">
+    <div class="col-sm-6 col-md-3 <%= cycle("bg-success","bg-danger","bg-success","bg-info") %>">
       <div >
          <%= image_tag location.avatar.url%>
       </div>
