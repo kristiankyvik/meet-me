@@ -16,5 +16,19 @@
   <p>
   <%= f.file_field :avatar %>
   </p>
+<% if @location.comments.empty? %>
+  <%= f.fields_for :comments do |comment_form| %>
+    <%= comment_form.hidden_field :id %>
+    <%= comment_form.label "Comment" %>
+    <%= comment_form.text_area :comment_text %>
+  <% end %>
+<% end %>
+   <%= f.fields_for :comments do |comment_form| %>
+    <%= comment_form.hidden_field :id %>
+    <%= comment_form.label "Comment" %>
+    <%= comment_form.text_area :comment_text %>
+    <%= comment_form.label :destroy %>
+    <%= comment_form.check_box :_destroy %>
+   <% end %>
   <%= f.submit "Save" %>
 <% end %>

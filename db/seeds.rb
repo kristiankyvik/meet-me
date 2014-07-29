@@ -8,45 +8,45 @@ s6=Location.create(name: "COrner", city: "Corcho", country: "Germany" )
 s7=Location.create(name: "Mola", city: "Ojo", country: "Mallorca" )
 
 
-img = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/barcelona.jpeg")
-s.avatar = img
-img.close
-s.save!
+# img = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/barcelona.jpeg")
+# s.avatar = img
+# img.close
+# s.save!
 
-img1 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/valencia.jpeg")
-s1.avatar = img1
-img1.close
-s1.save!
+# img1 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/valencia.jpeg")
+# s1.avatar = img1
+# img1.close
+# s1.save!
 
-img2 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/download.jpeg")
-s2.avatar = img2
-img2.close
-s2.save!
+# img2 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/download.jpeg")
+# s2.avatar = img2
+# img2.close
+# s2.save!
 
-img3 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/newyork.jpeg")
-s3.avatar = img3
-img3.close
-s3.save!
+# img3 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/newyork.jpeg")
+# s3.avatar = img3
+# img3.close
+# s3.save!
 
-img4 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/paris.jpeg")
-s4.avatar = img4
-img4.close
-s4.save!
+# img4 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/paris.jpeg")
+# s4.avatar = img4
+# img4.close
+# s4.save!
 
-img5 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/seattle.jpeg")
-s5.avatar = img5
-img5.close
-s5.save!
+# img5 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/seattle.jpeg")
+# s5.avatar = img5
+# img5.close
+# s5.save!
 
-img6 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/tokyo.jpeg")
-s6.avatar = img6
-img6.close
-s6.save!
+# img6 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/tokyo.jpeg")
+# s6.avatar = img6
+# img6.close
+# s6.save!
 
-img7 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/berlin.jpeg")
-s7.avatar = img7
-img7.close
-s7.save!
+# img7 = File.open("/Users/kristiankyvik/Ironhack/code/week3/day1/images/berlin.jpeg")
+# s7.avatar = img7
+# img7.close
+# s7.save!
 
 
 arr = (1..100).to_a
