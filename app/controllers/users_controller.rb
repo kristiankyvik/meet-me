@@ -25,6 +25,10 @@ class UsersController < ApplicationController
   	end
   end
 
+  def new
+    @user = User.new
+  end
+
   def destroy
   	User.destroy(params[:id])
   	redirect_to( action: 'index', controller: 'users',user_id: params[:id])
