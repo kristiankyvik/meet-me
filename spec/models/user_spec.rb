@@ -16,4 +16,11 @@ RSpec.describe User, :type => :model do
     expect(user.valid?).to eq(true)
   end
 
+  it "does not succeed with invalid username" do
+    user =  FactoryGirl.build(:user_with_visits)
+    inv_user =  FactoryGirl.build(:invalid_user)
+    expect(user.valid?).to eq(true)
+    expect(inv_user.valid?).to eq(false)
+  end
+
 end

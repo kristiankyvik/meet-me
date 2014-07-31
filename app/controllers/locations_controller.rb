@@ -9,17 +9,21 @@ class LocationsController < ApplicationController
 		render 'index'
 	end
 
+  def new
+    @location = Location.new()
+  end
+
 	def create
 		@location = Location.new(location_params)
-    	@location.save
-
+    @location.save
 		redirect_to root_url
 	end
+
+ 
 
 	def show
 		@location = Location.find(params[:id])
 		@users=User.all
-		
 		rescue ActiveRecord::RecordNotFound
 		render '404' , status: 404
 	end

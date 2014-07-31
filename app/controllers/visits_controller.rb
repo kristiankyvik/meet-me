@@ -5,8 +5,11 @@ class VisitsController < ApplicationController
       @visits = location.visits.where(:from_date => DateTime.now.beginning_of_month..DateTime.now.end_of_month)
   end
 
-  def show # TODO render not visit find, create a new partial
+  def show 
     @visit = Visit.find(params[:id])
+
+    rescue ActiveRecord::RecordNotFound
+      render '404' , status: 404
   end
 
   def new

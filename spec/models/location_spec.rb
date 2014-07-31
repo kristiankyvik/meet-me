@@ -13,5 +13,10 @@ RSpec.describe Location, :type => :model do
     vis2 = Visit.create(location_id: s6.id, user_id: us1.id, from_date: DateTime.now + 1.months, to_date: DateTime.now + 2.months)
     expect(s6.total_visits_in_month_of_year(7, 2014)).to eql(1)
   end
+
+  it "factory giuirl creates valid location" do
+    loc = FactoryGirl.build(:location)
+    expect(loc).to be_valid
+  end
 end
 
