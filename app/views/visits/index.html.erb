@@ -13,7 +13,7 @@
 <table class="table">
 <tr>
     <th>Id</th>
-    <th>User</th>
+    <th>Location Names</th>
     <th>From</th>
     <th>To</th>
     <th>Actions</th>
@@ -25,7 +25,7 @@
         <%= link_to visit.user_id, location_visit_path(visit.location.id, visit.id)%> 
       </td> 
       <td>
-        <%= visit.user_id %> 
+        <%= Location.find(visit.location_id).name %> 
       </td>
       <td>
         <%= visit.from_date %> 

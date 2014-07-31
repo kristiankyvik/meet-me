@@ -5,14 +5,12 @@
   <% end %>
   </ul>
 <% end %>
-
-
 <%= form_for [ @user, @visit ] do |f| %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
   <%= f.label "location to choose"%>
 
    <% location_array = @locations.map { |loc| [loc.name, loc.location_id] } %>
   <%= f.select :location_id, location_array %>
-
 
 <br/>
   <%= f.label 'from'  %>

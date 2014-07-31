@@ -21,18 +21,13 @@ class VisitsController < ApplicationController
   end
 
   def create
-    puts '='*100
-    puts params[:visit][:location_id]
-    puts visit_params
-    puts '='*100
     @location = Location.find(params["visit"]["location_id"])
-
     @visit = @location.visits.new( visit_params )
     if @visit.save
       flash[:message] = "Action has been succesfull!"
-      redirect_to( action: 'index', controller: 'visits', location_id: @location.id)
+      redirect_to( action: 'index', controller: 'visits', user_id: @visit.user_id)
     else
-      render 'new'
+      redirect_to(action: 'new', controller: 'visits')
     end 
   end
 

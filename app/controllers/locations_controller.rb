@@ -5,9 +5,9 @@ class LocationsController < ApplicationController
 
 	def index
     if user_signed_in?
-      visits=Visit.where(user_id = current_user.id)
-      # binding.pry
-		  @locations = Location.all
+      visits = current_user.visits
+      ids = visits.map{ |visit| visit.location_id}.uniq
+      @locations = Location.where(location_id: ids)
     else
       @locations =  Location.last(10)
     end

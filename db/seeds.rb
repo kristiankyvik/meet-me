@@ -49,29 +49,29 @@ img7.close
 s7.save!
 
 
-arr = (1..100).to_a
+# arr = (1..100).to_a
 
-arr.sample
+# arr.sample
 
-us1 = User.create( user_name: "pepito")
-us2 = User.create( user_name: "juanito")
-us3 = User.create( user_name: "Goran")
-us4 = User.create( user_name: "lolita")
-us5 = User.create( user_name: "huan")
-us6 = User.create( user_name: "merchecita")
-us7 = User.create( user_name: "walt")
-
-
-Visit.create(location_id: s.id, user_id: us1.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
-Visit.create(location_id: s1.id, user_id: us2.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
-Visit.create(location_id: s2.id, user_id: us2.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
-Visit.create(location_id: s2.id, user_id: us4.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
-Visit.create(location_id: s2.id, user_id: us5.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
-Visit.create(location_id: s2.id, user_id: us7.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
-Visit.create(location: s2, user_id: us6.id, from_date: DateTime.now + 1.hour, to_date:DateTime.now + 2.hours)
+# us1 = User.create( user_name: "pepito")
+# us2 = User.create( user_name: "juanito")
+# us3 = User.create( user_name: "Goran")
+# us4 = User.create( user_name: "lolita")
+# us5 = User.create( user_name: "huan")
+# us6 = User.create( user_name: "merchecita")
+# us7 = User.create( user_name: "walt")
 
 
-# 100.times do 
+# Visit.create(location_id: s.id, user_id: us1.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+# Visit.create(location_id: s1.id, user_id: us2.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+# Visit.create(location_id: s2.id, user_id: us2.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+# Visit.create(location_id: s2.id, user_id: us4.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+# Visit.create(location_id: s2.id, user_id: us5.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+# Visit.create(location_id: s2.id, user_id: us7.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)
+# Visit.create(location: s2, user_id: us6.id, from_date: DateTime.now + 1.hour, to_date:DateTime.now + 2.hours)
+
+
+# # 100.times do 
 #   User.create street: Faker::Address.street_address
 #   5.times do
 #     Comment.create 
