@@ -55,8 +55,8 @@ arr.sample
 
 us1 = User.create( user_name: "pepito")
 us2 = User.create( user_name: "juanito")
-us3 = User.create( user_name: "Goran"
-)us4 = User.create( user_name: "lolita")
+us3 = User.create( user_name: "Goran")
+us4 = User.create( user_name: "lolita")
 us5 = User.create( user_name: "huan")
 us6 = User.create( user_name: "merchecita")
 us7 = User.create( user_name: "walt")

@@ -1,3 +1,4 @@
+require 'pry'
 class VisitsController < ApplicationController
 
   def index
@@ -20,9 +21,13 @@ class VisitsController < ApplicationController
   end
 
   def create
-    @location = Location.find(params[:location_id])
+    puts '='*100
+    puts params[:visit][:location_id]
+    puts visit_params
+    puts '='*100
+    @location = Location.find(params["visit"]["location_id"])
+
     @visit = @location.visits.new( visit_params )
-    @users =User.all
     if @visit.save
       flash[:message] = "Action has been succesfull!"
       redirect_to( action: 'index', controller: 'visits', location_id: @location.id)
@@ -55,6 +60,6 @@ class VisitsController < ApplicationController
 
   private
     def visit_params
-        params.require(:visit).permit(:to_date, :from_date, :user_id)
+        params.require(:visit).permit(:to_date, :from_date, :user_id, :location_id)
     end
 end
