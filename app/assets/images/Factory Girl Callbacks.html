@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://robots.thoughtbot.com/aint-no-calla-back-girl -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<title>Factory Girl Callbacks</title>
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="NOODP" name="robots">
+<link href="https://plus.google.com/115463449660844194795" rel="author">
+
+<link href="http://robots.thoughtbot.com/images/favicon.ico" rel="icon" type="image/ico">
+<link href="feed://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots" rel="alternate" type="application/rss+xml">
+<script type="text/javascript" async="" src="./Factory Girl Callbacks_files/analytics.js"></script><script type="text/javascript" async="" src="./Factory Girl Callbacks_files/analytics.min.js"></script><script>
+  // Remove render-blocking JavaScripts
+  // https://developers.google.com/speed/docs/insights/BlockingJS
+  (function() {
+    function loadStylesheet(url) {
+      var stylesheet = document.createElement('link');
+      stylesheet.type = 'text/css';
+      stylesheet.rel = 'stylesheet';
+      stylesheet.href = url;
+      document.getElementsByTagName('head')[0].appendChild(stylesheet);
+    }
+  
+    loadStylesheet('//cloud.typography.com/6716232/768182/css/fonts.css');
+    loadStylesheet('/stylesheets/mobile-307a78cb.css');
+    loadStylesheet('/stylesheets/desktop-0cdfc101.css');
+  
+    function loadScript(url, callback) {
+      var script = document.createElement('script')
+      script.type = 'text/javascript';
+      script.async = true;
+  
+      if (script.readyState) { // IE
+        script.onreadystatechange = function() {
+          if (script.readyState == 'loaded' || script.readyState == 'complete') {
+            script.onreadystatechange = null;
+            callback();
+          }
+        };
+      } else { // Others
+        script.onload = function() {
+          callback();
+        };
+      }
+  
+      script.src = url;
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
+  
+    loadScript('/javascripts/highlight.pack-d027d6cb.js', function() {
+      hljs.configure({ classPrefix: '' });
+      hljs.initHighlightingOnLoad();
+    });
+  
+    loadScript('/javascripts/hide-address-bar-13745763.js', function() {});
+  
+    loadScript('http://code.jquery.com/jquery-1.10.1.min.js', function() {
+      loadScript('/javascripts/caption-c90976ac.js', function() {});
+    });
+  
+    var google_conversion_id = 986432894;
+    var google_conversion_label = 'mGu-CIrpywgQ_oqv1gM';
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+  
+    loadScript('//www.googleadservices.com/pagead/conversion.js', function() {});
+  
+    window.analytics||(window.analytics=[]),window.analytics.methods=["identify","track","trackLink","trackForm","trackClick","trackSubmit","page","pageview","ab","alias","ready","group","on","once","off"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var method=window.analytics.methods[i];window.analytics[method]=window.analytics.factory(method)}window.analytics.load=function(t){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)},window.analytics.SNIPPET_VERSION="2.0.8", window.analytics.load("wperrhev8f");
+  
+    window.analytics.page();
+  
+    window.CarnivalOptions = {
+      enabled: true,
+      host: 'carnival.thoughtbot.com',
+      article_selector: 'article:not(.mini-post)',
+      block_selector: ':scope .post-body > p, :scope .post-body > pre',
+      onNewComment: function(comment) {
+        [].slice.call(comment.element.querySelectorAll('pre code')).map(
+          function(e) { hljs.highlightBlock(e); }
+        );
+      }
+    };
+    loadScript('/javascripts/comments-ebf66992.js', function() {});
+  })();
+</script><link type="text/css" rel="stylesheet" href="./Factory Girl Callbacks_files/fonts.css"><link type="text/css" rel="stylesheet" href="./Factory Girl Callbacks_files/mobile-307a78cb.css"><link type="text/css" rel="stylesheet" href="./Factory Girl Callbacks_files/desktop-0cdfc101.css"><script type="text/javascript" async="" src="./Factory Girl Callbacks_files/highlight.pack-d027d6cb.js"></script><script type="text/javascript" async="" src="./Factory Girl Callbacks_files/hide-address-bar-13745763.js"></script><script type="text/javascript" async="" src="./Factory Girl Callbacks_files/jquery-1.10.1.min.js"></script><script type="text/javascript" async="" src="./Factory Girl Callbacks_files/conversion.js"></script><script type="text/javascript" async="" src="./Factory Girl Callbacks_files/comments-ebf66992.js"></script>
+<noscript>
+&lt;div style='display:inline;'&gt;
+&lt;img alt='' height='1' src='//googleads.g.doubleclick.net/pagead/viewthroughconversion/986432894/?value=0&amp;amp;amp;label=mGu-CIrpywgQ_oqv1gM&amp;amp;amp;guid=ON&amp;amp;amp;script=0' style='border-style:none;' width='1'&gt;
+&lt;/div&gt;
+</noscript>
+<style type="text/css"></style><script type="text/javascript" async="" src="./Factory Girl Callbacks_files/caption-c90976ac.js"></script></head>
+<body>
+<section id="container">
+<header>
+<h2 class="logo">
+<a href="http://robots.thoughtbot.com/">
+<img alt="thoughtbot logo" data-png-fallback="http://images.thoughtbot.com/logo.png" src="./Factory Girl Callbacks_files/logo.svg">
+</a>
+</h2>
+<hgroup>
+<h2>
+<a href="http://robots.thoughtbot.com/">
+GIANT ROBOTS SMASHING INTO OTHER GIANT ROBOTS
+</a>
+</h2>
+<h3>
+Written by
+<a href="http://thoughtbot.com/">
+thoughtbot
+</a>
+</h3>
+</hgroup>
+</header>
+<section id="posts">
+<article class="post text" data-url="/aint-no-calla-back-girl"><div class="carnival"></div>
+<h1 class="title">
+<a href="./Factory Girl Callbacks_files/Factory Girl Callbacks.html">
+Factory Girl Callbacks
+</a>
+</h1>
+<aside class="meta-info">
+<img src="./Factory Girl Callbacks_files/dan.jpg">
+<p class="author">
+<a href="https://twitter.com/croaky">Dan Croak</a>
+</p>
+<p class="post-date">
+<a href="./Factory Girl Callbacks_files/Factory Girl Callbacks.html">
+November 23, 2009
+</a>
+</p><ul class="tags">
+<li>
+<a href="http://robots.thoughtbot.com/tags/ruby">ruby</a>
+</li>
+<li>
+<a href="http://robots.thoughtbot.com/tags/testing"> testing</a>
+</li>
+<li>
+<a href="http://robots.thoughtbot.com/tags/open-source"> open source</a>
+</li>
+</ul>
+<p></p>
+</aside>
+
+<div class="post-body">
+<div id="FGnFGn-indicator" data-indicator-for="FGnFGn" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="FGnFGn">Factory Girl now has callbacks thanks to <a href="http://github.com/nate">Nate Sutton</a>.</p>
+
+<div id="httpsthoughtbottrainingsamazonawscomimagesthisshitbananasjpg-indicator" data-indicator-for="httpsthoughtbottrainingsamazonawscomimagesthisshitbananasjpg" class="comment-indicator" style="opacity: 0;"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="httpsthoughtbottrainingsamazonawscomimagesthisshitbananasjpg"><img alt="this shit is bananas" src="./Factory Girl Callbacks_files/this-shit-bananas.jpg"></p>
+
+<div id="TatTat-indicator" data-indicator-for="TatTat" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="TatTat">There are three callbacks:</p>
+
+<div id="aa-indicator" data-indicator-for="aa" class="comment-indicator" style="opacity: 0;"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="aa"><code class=" hljs ">after_build
+after_create
+after_stub
+</code></pre>
+
+<div id="WbiLfc-indicator" data-indicator-for="WbiLfc" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="WbiLfc">When <code>build(:user)</code> is invoked, the <code>after_build</code> callback runs after building
+the user. Likewise for <code>create</code> and <code>stub</code>.</p>
+
+<div id="TciTci-indicator" data-indicator-for="TciTci" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="TciTci">These come in handy in a number of common use cases.</p>
+
+<h2>Basic has many associations</h2>
+
+<div id="MM-indicator" data-indicator-for="MM" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="MM">Models:</p>
+
+<div id="cAAcAA-indicator" data-indicator-for="cAAcAA" class="comment-indicator" style="opacity: 0;"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="cAAcAA"><code class=" hljs ruby"><span class="class"><span class="keyword">class</span> <span class="title">Article</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span>
+  has_many <span class="symbol">:comments</span>
+<span class="keyword">end</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">Comment</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span>
+  belongs_to <span class="symbol">:article</span>
+<span class="keyword">end</span>
+</code></pre>
+
+<div id="FF-indicator" data-indicator-for="FF" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="FF">Factories:</p>
+
+<div id="fadfad-indicator" data-indicator-for="fadfad" class="comment-indicator" style="opacity: 0;"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="fadfad"><code class=" hljs ruby">factory <span class="symbol">:article</span> <span class="keyword">do</span>
+  body <span class="string">'password'</span>
+
+  factory <span class="symbol">:article_with_comment</span> <span class="keyword">do</span>
+    after_create <span class="keyword">do</span> |article|
+      create(<span class="symbol">:comment</span>, <span class="symbol">article:</span> article)
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+factory <span class="symbol">:comment</span> <span class="keyword">do</span>
+  body <span class="string">'Great article!'</span>
+<span class="keyword">end</span>
+</code></pre>
+
+<div id="NClu-indicator" data-indicator-for="NClu" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="NClu">Nice. Callbacks let us do this:</p>
+
+<div id="acac-indicator" data-indicator-for="acac" class="comment-indicator" style="opacity: 0;"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="acac"><code class=" hljs ruby">article = create(<span class="symbol">:article_with_comment</span>)
+</code></pre>
+
+<div id="IotIot-indicator" data-indicator-for="IotIot" class="comment-indicator" style="opacity: 0;"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="IotIot">Instead of this:</p>
+
+<div id="acaaca-indicator" data-indicator-for="acaaca" class="comment-indicator" style="opacity: 0;"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="acaaca"><code class=" hljs ruby">article = create(<span class="symbol">:article</span>)
+create(<span class="symbol">:comment</span>, <span class="symbol">article:</span> article)
+</code></pre>
+
+<h2>Polymorphic relationships</h2>
+
+<div id="TsgTsg-indicator" data-indicator-for="TsgTsg" class="comment-indicator" style="opacity: 1;"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="TsgTsg">The savings get larger when the object graph gets more complex:</p>
+
+<div id="MM-indicator" data-indicator-for="MM" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="MM">Models:</p>
+
+<div id="cUAcUA-indicator" data-indicator-for="cUAcUA" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="cUAcUA"><code class=" hljs ruby"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span>
+  has_many <span class="symbol">:interests</span>, <span class="symbol">as:</span> <span class="symbol">:interested</span>
+  has_many <span class="symbol">:topics</span>, <span class="symbol">through:</span> <span class="symbol">:interests</span>
+<span class="keyword">end</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">Interest</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span>
+  belongs_to <span class="symbol">:topic</span>
+  belongs_to <span class="symbol">:interested</span>, <span class="symbol">polymorphic:</span> <span class="keyword">true</span>
+<span class="keyword">end</span>
+</code></pre>
+
+<div id="BbfBbf-indicator" data-indicator-for="BbfBbf" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="BbfBbf">Building block factories:</p>
+
+<div id="fuefue-indicator" data-indicator-for="fuefue" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="fuefue"><code class=" hljs ruby">factory <span class="symbol">:user</span>
+  email
+  password <span class="string">'password'</span>
+
+  factory <span class="symbol">:email_confirmed_user</span> <span class="keyword">do</span>
+    email_confirmed { <span class="keyword">true</span> }
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+factory <span class="symbol">:topic</span> <span class="keyword">do</span>
+  name <span class="string">'topic_name'</span>
+<span class="keyword">end</span>
+
+factory <span class="symbol">:interest</span>
+  topic
+  interested <span class="symbol">factory:</span> <span class="symbol">:user</span>
+<span class="keyword">end</span>
+
+factory <span class="symbol">:music_interest</span>, <span class="class"><span class="keyword">class</span>: '<span class="title">Interest</span>' <span class="title">do</span></span>
+  topic.association(<span class="symbol">:topic</span>, <span class="symbol">name:</span> <span class="string">'Music'</span>)
+<span class="keyword">end</span>
+
+factory <span class="symbol">:sports_interest</span>, <span class="class"><span class="keyword">class</span>: '<span class="title">Interest</span>' <span class="title">do</span></span>
+  topic.association(<span class="symbol">:topic</span>, <span class="symbol">name:</span> <span class="string">'Sports'</span>)
+<span class="keyword">end</span>
+</code></pre>
+
+<div id="AntAnt-indicator" data-indicator-for="AntAnt" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="AntAnt">And now the payoff:</p>
+
+<div id="fmpfmp-indicator" data-indicator-for="fmpfmp" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="fmpfmp"><code class=" hljs ruby">factory <span class="symbol">:musical_user</span>, <span class="symbol">parent:</span> <span class="symbol">:email_confirmed_user</span> <span class="keyword">do</span>
+  after_create { |user| create(<span class="symbol">:music_interest</span>, <span class="symbol">interested:</span> user)
+<span class="keyword">end</span>
+
+factory <span class="symbol">:sporty_user</span>, <span class="symbol">parent:</span> <span class="symbol">:email_confirmed_user</span> <span class="keyword">do</span>
+  after_create { |user| create(<span class="symbol">:sports_interest</span>, <span class="symbol">interested:</span> user) }
+<span class="keyword">end</span>
+</code></pre>
+
+<div id="AflAfl-indicator" data-indicator-for="AflAfl" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="AflAfl">Again, factories let us do this:</p>
+
+<div id="ucuc-indicator" data-indicator-for="ucuc" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="ucuc"><code class=" hljs ruby">user = create(<span class="symbol">:musical_user</span>)
+</code></pre>
+
+<div id="IoIo-indicator" data-indicator-for="IoIo" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="IoIo">Instead of:</p>
+
+<div id="uciuci-indicator" data-indicator-for="uciuci" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="uciuci"><code class=" hljs sql">user = <span class="operator"><span class="keyword">create</span>(:email_confirmed_user)
+<span class="keyword">create</span>(:music_interest, interested: <span class="keyword">user</span>)
+</span></code></pre>
+
+<div id="MiMep-indicator" data-indicator-for="MiMep" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="MiMep">More intention-revealing. More encapsulation, protecting us from change.</p>
+
+<h2>Working with fakes</h2>
+
+<div id="FaaFaa-indicator" data-indicator-for="FaaFaa" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="FaaFaa"><a href="http://robots.thoughtbot.com/post/219216005/fake-it">Fakes</a> are a good
+approach for testing objects that interface with web services such as geocoding
+and payment processing.</p>
+
+<div id="cUAcUA-indicator" data-indicator-for="cUAcUA" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="cUAcUA"><code class=" hljs ruby"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span>
+  acts_as_mappable
+  before_validation <span class="symbol">:geocode_location</span>, <span class="symbol">if:</span> <span class="symbol">:location_changed?</span>
+
+  <span class="function"><span class="keyword">def</span> </span>geocode_location
+    geo = <span class="constant">Geokit::Geocoders::MultiGeocoder</span>.geocode(location)
+    <span class="keyword">self</span>.lat, <span class="keyword">self</span>.lng = geo.lat, geo.lng
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+factory <span class="symbol">:user</span> <span class="keyword">do</span>
+  factory <span class="symbol">:boston_user</span> <span class="keyword">do</span>
+    location <span class="string">'Boston, MA'</span>
+
+    after_build <span class="keyword">do</span> |user|
+      <span class="constant">Geokit::Geocoders::FakeGeocoder</span>.locations[<span class="string">'Boston, MA'</span>] = [<span class="number">0</span>, <span class="number">1</span>]
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</code></pre>
+
+<h2>Enjoy!</h2>
+
+<div id="II-indicator" data-indicator-for="II" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="II">Install:</p>
+
+<div id="gfgf-indicator" data-indicator-for="gfgf" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><pre id="gfgf"><code class=" hljs bash">gem <span class="string">'factory_girl'</span>
+</code></pre>
+
+<div id="HtHt-indicator" data-indicator-for="HtHt" class="comment-indicator"><span class="count">+</span><svg><path d="M0.848275862,0 C0.38,0 0,0.508615385 0,1.13538462 L0,18.4006154 C0,19.0273846 0.38,19.536 0.848275862,19.536 L4.16896552,19.536 L4.16896552,22.8 C4.16896552,23.6815385 4.60068966,23.9704615 5.12758621,23.4433846 L9.03448276,19.5369231 L19.2206897,19.5369231 C19.6889655,19.5369231 20.0689655,19.0283077 20.0689655,18.4015385 L20.0689655,1.13538462 C20.0696552,0.508615385 19.6896552,3.68935651e-15 19.2213793,3.68935651e-15 L0.848275862,0 Z"></path></svg></div><p id="HtHt">Happy testing.</p>
+
+</div>
+</article>
+
+
+</section>
+</section>
+<footer>
+<section id="footer-container">
+<section class="etc">
+<p>
+Want to learn a lot more? We teach
+<a href="http://www.thisismetis.com/ruby-on-rails?utm_source=thoughtbot&utm_medium=blog&utm_campaign=footer">
+12-week Ruby on Rails bootcamps
+</a>
+in Boston and New York City.
+</p>
+
+
+<nav><ul><li><a href="http://twitter.com/thoughtbot" id="twitter">
+twitter
+</a></li><li><a href="http://tinyletter.com/thoughtbot" id="contact">
+newsletter
+</a></li></ul></nav>
+</section>
+</section>
+</footer>
+
+
+
+<div><link rel="stylesheet" href="http://carnival.thoughtbot.com/static/tmp/N7NHUdzb.css">
+<script src="./Factory Girl Callbacks_files/PgazMehH.js"></script></div></body></html>

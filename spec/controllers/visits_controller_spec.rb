@@ -25,7 +25,7 @@ RSpec.describe VisitsController, :type => :controller do
     expect(assigns(:visit)).to eq(@visit)
   end
 
-  xit "id does not belong to existing location, renders error page" do
+  it "id does not belong to existing location, renders error page" do
     get :show,  {:location_id => @location.id, :id => 156}
     expect(response).to render_template("404")
   end

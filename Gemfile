@@ -31,6 +31,8 @@ gem 'rspec-rails', group: [:test, :development]
 
 gem "paperclip", "~> 4.1"
 gem 'bootstrap_form'
+gem 'factory_girl_rails'
+gem 'simple_form'
 
 
 

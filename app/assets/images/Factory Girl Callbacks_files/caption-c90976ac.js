@@ -1,0 +1,1 @@
+$(document).ready(function(){$("p span.caption").parents("p").find("img").css("margin-bottom","0")});
