@@ -53,13 +53,13 @@ arr = (1..100).to_a
 
 arr.sample
 
-us1 = User.create( user_name: "pepito", name: "quillo")
-us2 = User.create( user_name: "juanito", name: "juan")
-us3 = User.create( user_name: "Goran", name: "jose")
-us4 = User.create( user_name: "lolita", name: "lola")
-us5 = User.create( user_name: "huan", name: "paco")
-us6 = User.create( user_name: "merchecita", name: "merche")
-us7 = User.create( user_name: "walt", name: "juan")
+us1 = User.create( user_name: "pepito")
+us2 = User.create( user_name: "juanito")
+us3 = User.create( user_name: "Goran"
+)us4 = User.create( user_name: "lolita")
+us5 = User.create( user_name: "huan")
+us6 = User.create( user_name: "merchecita")
+us7 = User.create( user_name: "walt")
 
 
 Visit.create(location_id: s.id, user_id: us1.id, from_date: DateTime.now + 1.hour, to_date: DateTime.now + 2.hours)

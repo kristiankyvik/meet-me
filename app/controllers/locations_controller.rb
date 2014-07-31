@@ -1,10 +1,16 @@
+# require 'devise'
+require 'pry'
+
 class LocationsController < ApplicationController
 
 	def index
-		@locations = Location.last(10)
-
-    @location = Location.new
-    @location.comments.build
+    if user_signed_in?
+      visits=Visit.where(user_id = current_user.id)
+      # binding.pry
+		  @locations = Location.all
+    else
+      @locations =  Location.last(10)
+    end
 
 		render 'index'
 	end

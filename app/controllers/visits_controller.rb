@@ -1,8 +1,8 @@
 class VisitsController < ApplicationController
 
   def index
-      location = Location.find(params[:location_id])
-      @visits = location.visits.where(:from_date => DateTime.now.beginning_of_month..DateTime.now.end_of_month)
+      user = User.find(params[:user_id])
+      @visits = user.visits.where(:from_date => DateTime.now.beginning_of_month..DateTime.now.end_of_month)
   end
 
   def show 
@@ -13,9 +13,9 @@ class VisitsController < ApplicationController
   end
 
   def new
-    @location = Location.find(params[:location_id])
+    @user = User.find(params[:user_id])
     @visit = Visit.new()
-    @users =User.all
+    @locations = Location.all
     render "new"
   end
 

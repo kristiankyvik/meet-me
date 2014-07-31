@@ -12,7 +12,7 @@
   <tr>
     <td><%= user.id %></td> 
     <td><%= link_to user.user_name, user_path(user.id) %></td> 
-    <td> <%=  user.name %></td>
+    <td> <%=  user.email %></td>
     <td> <%=  user.nationality %></td>
     <td> <%=  link_to user.visits.count, user_visits_path(user.id)%></td>
     <td> <%=  link_to "delete", user_path(user.id),

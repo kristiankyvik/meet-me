@@ -7,11 +7,11 @@
 <% end %>
 
 
-<%= form_for [ @location, @visit ] do |f| %>
-  <%= f.label :user_id  %>
+<%= form_for [ @user, @visit ] do |f| %>
+  <%= f.label "location to choose"%>
 
-   <% user_array = @users.map { |user| [user.user_name, user.id] } %>
-  <%= f.select :user_id, user_array %>
+   <% location_array = @locations.map { |loc| [loc.name, loc.location_id] } %>
+  <%= f.select :location_id, location_array %>
 
 
 <br/>

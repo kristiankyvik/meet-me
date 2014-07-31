@@ -39,22 +39,33 @@
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to "Home", root_path %></li>
         <li class="active"><%= link_to "Users", users_path %></li>
+      </ul>
     </div><!-- /.navbar-collapse -->
-  
+  </div><!-- /.container-fluid -->
+
     <ul class="nav navbar-nav navbar-right">
     <li><% if user_signed_in? %>
-      <%= current_user.email %><%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
+      <%= current_user.email %>
+      <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
         <% else %>
+
           <span>You are not signed in.</span>
-          <%= link_to 'Login', new_user_session_path %>
+          <%= form_for(:user, :url => session_path(:user)) do |f| %>
+          <%= f.text_field :email %>
+          <%= f.password_field :password %>
+          <%= f.submit 'Sign in' %>
+          <% end %>
+          <%= link_to "Forgot your password?", new_password_path(:user) %>
+          <span>if new user: </span>
+          <%= link_to 'Sign up', new_user_registration_path %>
         <% end %>
     </li>
   </ul>
-  </div><!-- /.container-fluid -->
-
   
 
 </nav>
+
+
   <div class="container">
   <%= yield %>
 
