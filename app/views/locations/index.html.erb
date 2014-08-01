@@ -2,33 +2,19 @@
  HOME
 <% end %>
 
-
-
 <div class="jumbotron">
   <h1>All your places in one place</h1>
   <p>Invite your friends and family and add your own visits or locations!</p>
-  <p><%=  link_to "Create you own location", new_location_path, method: 'get', :class => "btn btn-info btn-lg" %></p>
-
+  <%= form_for :search, url: search_index_path, :html => { :class => 'form-search' } do |f| %>
+    <%= f.text_field :key_word, :class => "input-medium search-query", :placeholder => "where are you go?" %>
+    <%= f.submit %>
+<% end %>
 </div>
 
-
-
-<%= form_for :search, url: search_index_path, :html => { :class => 'form-search' } do |f| %>
-  <p>
-    <%= f.label :key_word %><br>
-    <%= f.text_field :key_word, :class => "input-medium search-query" %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-
 <div class="row">
-  <div class="col-md-10 rd">
-    <h1>My Locations</h1>
-    <h3><%= link_to "New Location", new_location_path %></h3>
+  <div class="col-md-10 rd" style="width: 100%;">
+    <h1 class="pull-left">My Locations</h1>
+    <%=  link_to "Create you own location", new_location_path, method: 'get', :class => "btn btn-info btn-lg pull-right" %>
   </div> 
 </div>
 

@@ -29,5 +29,4 @@ gem 'bootstrap_form'
 gem 'factory_girl_rails'
 gem 'simple_form'
 gem 'devise'
-
-
+gem 'capybara'

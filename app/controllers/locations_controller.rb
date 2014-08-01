@@ -11,7 +11,6 @@ class LocationsController < ApplicationController
     else
       @locations =  Location.last(10)
     end
-
 		render 'index'
 	end
 

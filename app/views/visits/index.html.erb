@@ -7,7 +7,9 @@
   <h1>My Visits</h1>
 </div>
  <div class="col-md-2 rd myh1">
+   <% if user_signed_in? && (current_user.id == params[:user_id].to_i) %>
     <%= link_to "Add Visit", new_user_visit_path(params[:user_id]),:class => "btn btn-primary" %>
+   <% end %>
 </div>
 
 <table class="table">
