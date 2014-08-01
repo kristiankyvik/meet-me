@@ -11,7 +11,6 @@ class LocationsController < ApplicationController
     else
       @locations =  Location.last(10)
     end
-
 		render 'index'
 	end
 
@@ -24,8 +23,6 @@ class LocationsController < ApplicationController
     @location.save
 		redirect_to root_url
 	end
-
- 
 
 	def show
 		@location = Location.find(params[:id])
