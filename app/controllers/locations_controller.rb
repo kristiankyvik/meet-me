@@ -24,6 +24,8 @@ class LocationsController < ApplicationController
 		redirect_to root_url
 	end
 
+ 
+
 	def show
 		@location = Location.find(params[:id])
 		@users=User.all
