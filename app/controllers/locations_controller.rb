@@ -48,7 +48,7 @@ class LocationsController < ApplicationController
 		
 		@location.update_attributes visit_params
 	    if @location.save
-	      redirect_to( action: 'index')
+	      redirect_to root_url
 	    else
 	      render 'edit'
 	    end 
